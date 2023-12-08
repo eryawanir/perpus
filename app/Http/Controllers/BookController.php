@@ -34,8 +34,7 @@ class BookController extends Controller
         Book::create($validated);
 
 
-        session()->flash('message', 'Penambahan buku ' . $validated['title']
-            . ' berhasil');
+        session()->flash('inserted_title', $validated['title']);
 
         return redirect()->route('books.index');
     }

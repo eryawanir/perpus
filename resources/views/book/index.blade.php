@@ -8,6 +8,11 @@
    <a href="{{ route('books.create') }}" class="btn btn-primary">
     Tambah Buku
    </a>
+   @if (session()->has('inserted_title'))
+    <div class="alert alert-success mt-2 ">
+     Pendaftaran buku <strong>{{ session()->get('inserted_title') }}</strong> berhasil
+    </div>
+   @endif
 
    <table class="table table-striped">
     <thead>

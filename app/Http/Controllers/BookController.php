@@ -52,15 +52,20 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit')->with('book', $book);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(StoreBookRequest $request, Book $book)
     {
-        //
+        $validated = $request->validated();
+        Book::where('id', $book->id)->update($validated);
+
+        return redirect()
+            ->route('books.show', ['book' => $book->id])
+            ->with('pesan', 'Sukses di update!');
     }
 
     /**

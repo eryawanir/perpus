@@ -22,7 +22,7 @@ class StoreBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:books,title|max:150',
+            'title' => 'required|max:150|unique:books,title,' . $this->book->id,
             'author' => 'required|max:100',
             'publisher' => 'required|max:80',
             'published_at' => 'required|date',

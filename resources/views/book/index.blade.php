@@ -34,10 +34,10 @@
        <td>{{ $book->publisher }}</td>
        <td>{{ $book->published_at }}</td>
        <td>
-        <a href="{{ route('books.update', $loop->index) }}" class="btn btn-primary">
+        <a href="{{ route('books.edit', ['book' => $book->id]) }}" class="btn btn-primary">
          Update
         </a>
-        <a href="{{ route('books.destroy', $loop->index) }}" class="btn btn-danger">
+        <a href="{{ route('books.destroy', ['book' => $book->id]) }}" class="btn btn-danger">
          Hapus
         </a>
        </td>

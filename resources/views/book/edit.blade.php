@@ -42,6 +42,7 @@
       <div class="text-danger">{{ $message }}</div>
      @enderror
     </div>
+    <a href="{{ route('books.index') }}" class="btn btn-secondary">Kembali</a>
     <button type="submit" class="btn btn-primary">Submit</button>
    </form>
   </div>

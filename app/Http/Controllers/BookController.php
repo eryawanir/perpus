@@ -34,7 +34,8 @@ class BookController extends Controller
         Book::create($validated);
 
 
-        session()->flash('inserted_title', $validated['title']);
+        session()->flash('pesan', 'Pendaftaran buku berjudul ' . $validated['title']
+            . ' berhasil');
 
         return redirect()->route('books.index');
     }
@@ -73,6 +74,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('books.index')
+            ->with('pesan', "Judul buku $book->title berhasil dihapus");
     }
 }

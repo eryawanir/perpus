@@ -8,9 +8,9 @@
    <a href="{{ route('books.create') }}" class="btn btn-primary">
     Tambah Buku
    </a>
-   @if (session()->has('inserted_title'))
+   @if (session()->has('pesan'))
     <div class="alert alert-success mt-2 ">
-     Pendaftaran buku <strong>{{ session()->get('inserted_title') }}</strong> berhasil
+     {{ session()->get('pesan') }}
     </div>
    @endif
 
@@ -37,9 +37,11 @@
         <a href="{{ route('books.edit', ['book' => $book->id]) }}" class="btn btn-primary">
          Update
         </a>
-        <a href="{{ route('books.destroy', ['book' => $book->id]) }}" class="btn btn-danger">
-         Hapus
-        </a>
+        <form style="display:inline-block" method="POST" action="{{ route('books.destroy', ['book' => $book->id]) }}">
+         @method('DELETE')
+         @csrf
+         <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
        </td>
       </tr>
      @empty
